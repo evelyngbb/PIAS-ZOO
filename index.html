@@ -1,454 +1,168 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
+    <!-- Define que o site aceita caracteres como acentos e ç -->
     <meta charset="UTF-8">
+
+    <!-- Faz o site se adaptar a celulares e computadores -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZOOTOPIA-PET</title>
+
+    <!-- Nome que aparece na aba do navegador -->
+    <title>Zootopia Pet</title>
+
+    <!-- Conecta o arquivo HTML ao arquivo de estilos CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <!-- Cabeçalho principal do site -->
     <header>
-        <img class="logo" src="img/logo.png" alt="logo">
+        <h1>Zootopia Pet</h1>
+
+        <p>
+            Informações e dicas para ajudar nos cuidados com a saúde
+            e o bem-estar dos animais.
+        </p>
     </header>
-    
-    <div class="ong-bar">
-  <span>
-    <span class="heart-icon">🐾</span>
-    &nbsp;<strong>40%</strong> de cada compra é doado para ONGs de proteção animal —&nbsp;
-    cada pedido salva um bichinho! &nbsp;
-    <span class="heart-icon">❤️</span>
-  </span>
-</div>
 
-<header>
-  <div class="header-inner">
-    <a class="logo" href="#"><span>ZOOTOPIA-PET</span></a>
- 
-    <div class="search-wrap">
-      <input type="text" id="searchInput" placeholder="Buscar rações, petiscos, snacks…" autocomplete="off">
-      <button class="search-btn" onclick="doSearch()">🔍</button>
-      <div class="search-dropdown" id="searchDropdown"></div>
-    </div>
- 
-    <nav>
-      <a href="#" class="active">Início</a>
-      <a href="#produtos">Produtos</a>
-      <a href="#ong">ONG</a>
-      <a href="#sobre">Sobre</a>
-    </nav>
- 
-    <button class="cart-btn" onclick="openCart()">
-      🛒 Carrinho
-      <span class="cart-count" id="cartCount">0</span>
-    </button>
-  </div>
-</header>
+    <!-- Conteúdo principal do site -->
+    <main>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-badge">🌿 100% Natural &amp; Saudável</div>
-  <h1>Nutrição <em>real</em> para<br>quem você ama</h1>
-  <p>Rações naturais, petiscos artesanais e snacks saudáveis — sem conservantes, sem corantes, feitos com ingredientes que você pode reconhecer.</p>
-  <div class="hero-ctas">
-    <a href="#produtos" class="btn-primary">🛒 Ver produtos</a>
-    <a href="#ong" class="btn-secondary">❤️ Nossa causa</a>
-  </div>
+        <!-- Seção de apresentação -->
+        <section>
+            <h2>Cuide melhor do seu animal</h2>
+
+            <p>
+                Encontre informações sobre alimentação, cuidados,
+                higiene e prevenção de problemas de saúde.
+            </p>
+        </section>
+
+       <!-- Área de cadastro das ações realizadas pela comunidade -->
+<section>
+    <h2>Cadastrar uma ação</h2>
+
+    <!-- 
+        O formulário reúne os dados que o usuário precisa preencher.
+        O JavaScript será responsável por receber essas informações depois.
+    -->
+    <form id="formularioAcao">
+
+        <!-- Campo para informar a categoria da ação -->
+        <label for="categoria">Categoria:</label>
+        <input
+            type="text"
+            id="categoria"
+            name="categoria"
+            required
+        >
+
+        <!-- Campo para informar onde a ação aconteceu -->
+        <label for="local">Local:</label>
+        <input
+            type="text"
+            id="local"
+            name="local"
+            required
+        >
+
+        <!-- Campo para informar quantas pessoas participaram -->
+        <label for="participantes">Quantas pessoas participaram:</label>
+        <input
+            type="number"
+            id="participantes"
+            name="participantes"
+            min="0"
+            required
+        >
+
+        <!-- Campo para descrever o que foi feito -->
+        <label for="descricao">O que foi feito:</label>
+        <input
+            type="text"
+            id="descricao"
+            name="descricao"
+            required
+        >
+
+        <!-- 
+            A data não precisa ser preenchida pelo usuário.
+            O JavaScript vai colocar a data automaticamente.
+        -->
+
+        <!-- Botão que envia o formulário -->
+        <button type="submit">Cadastrar ação</button>
+
+    </form>
 </section>
- 
-<!-- ONG SECTION -->
-<section class="ong-section" id="ong">
-  <div class="ong-inner">
-    <div class="ong-pct">40<span>%</span></div>
-    <div class="ong-text">
-      <h2>Comprar aqui é um ato de amor</h2>
-      <p>
-        Toda compra feita na ZOOTOPIA-PET destina <strong>40% do lucro</strong> para ONGs que resgatam, tratam e reabilitam animais abandonados em todo o Brasil. Já ajudamos mais de <strong>1.200 animais</strong> a encontrar um lar amoroso.
-        <br><br>
-        Você alimenta seu pet com o melhor da natureza e ainda alimenta a esperança de quem mais precisa. 🐶🐱
-      </p>
-      <div class="ong-logos">
-        <span class="ong-chip">🐕 Amigos do Resgate SP</span>
-        <span class="ong-chip">🐈 Patinhas Salvas PR</span>
-        <span class="ong-chip">🐾 SOS Animal RJ</span>
-        <span class="ong-chip">+ 14 ONGs parceiras</span>
-      </div>
-    </div>
-  </div>
+<!-- Área onde serão mostradas as ações cadastradas -->
+<section>
+    <h2>Ações cadastradas</h2>
+    <!-- Mostra a quantidade de ações cadastradas -->
+<p class="contador-acoes">
+    Ações cadastradas: <strong id="quantidadeAcoes">0</strong>
+</p>
+
+    <!--
+        O JavaScript vai colocar as fichas cadastradas
+        dentro desta área.
+    -->
+    <div id="listaAcoes"></div>
 </section>
-  
-<!-- CATEGORIAS -->
-<div class="section" id="sobre">
-  <div class="section-header">
-    <h2 class="section-title">Categorias</h2>
-  </div>
-  <div class="cats-grid">
-    <a class="cat-card" href="#" onclick="filterCat('caes')">
-      <div class="cat-icon">🐶</div>
-      <div class="cat-name">Cães</div>
-      <div class="cat-count">24 produtos</div>
-    </a>
-    <a class="cat-card" href="#" onclick="filterCat('gatos')">
-      <div class="cat-icon">🐱</div>
-      <div class="cat-name">Gatos</div>
-      <div class="cat-count">18 produtos</div>
-    </a>
-    <a class="cat-card" href="#" onclick="filterCat('natural')">
-      <div class="cat-icon">🌿</div>
-      <div class="cat-name">Ração Natural</div>
-      <div class="cat-count">16 produtos</div>
-    </a>
-    <a class="cat-card" href="#" onclick="filterCat('petisco')">
-      <div class="cat-icon">🦴</div>
-      <div class="cat-name">Petiscos</div>
-      <div class="cat-count">20 produtos</div>
-    </a>
-    <a class="cat-card" href="#" onclick="filterCat('snack')">
-      <div class="cat-icon">🥕</div>
-      <div class="cat-name">Snacks Veganos</div>
-      <div class="cat-count">10 produtos</div>
-    </a>
-    <a class="cat-card" href="#" onclick="filterCat('filhote')">
-      <div class="cat-icon">🍼</div>
-      <div class="cat-name">Filhotes</div>
-      <div class="cat-count">12 produtos</div>
-    </a>
-  </div>
-</div>
-  
-<!-- PRODUCTS -->
-<div class="section" id="produtos">
-  <div class="section-header">
-    <h2 class="section-title">Nossos Produtos</h2>
-    <span class="section-sub">Feitos com amor e ingredientes reais</span>
-    <a href="#" class="section-link">Ver todos →</a>
-  </div>
- 
-  <div class="filter-tabs">
-    <button class="ftab active" onclick="setFilter('todos',this)">Todos</button>
-    <button class="ftab" onclick="setFilter('natural',this)">🌿 Rações Naturais</button>
-    <button class="ftab" onclick="setFilter('petisco',this)">🦴 Petiscos</button>
-    <button class="ftab" onclick="setFilter('snack',this)">🥕 Snacks</button>
-    <button class="ftab" onclick="setFilter('filhote',this)">🍼 Filhotes</button>
-  </div>
- 
-  <div class="products-grid" id="productsGrid">
-    <!-- Filled by JS -->
-  </div>
-</div>
- 
-<!-- DIFERENCIAIS -->
-<section class="features">
-  <div class="features-inner">
-    <h2 class="features-title">Por que escolher a NaturPet?</h2>
-    <div class="feats-grid">
-      <div class="feat">
-        <div class="feat-icon">🌿</div>
-        <h3>Ingredientes Reais</h3>
-        <p>Sem corantes artificiais, conservantes ou farinhas de baixa qualidade. Só o que você reconhece.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">👨‍⚕️</div>
-        <h3>Aprovado por Vets</h3>
-        <p>Cada fórmula é desenvolvida com nutricionistas veterinários especializados em nutrição natural.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">❤️</div>
-        <h3>40% para ONGs</h3>
-        <p>Quatro em cada dez reais do nosso lucro vão direto para resgatar e cuidar de animais abandonados.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🚚</div>
-        <h3>Entrega Rápida</h3>
-        <p>Frete grátis acima de R$ 150. Entrega em todo o Brasil, refrigerada para produtos frescos.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">♻️</div>
-        <h3>Embalagem Eco</h3>
-        <p>Embalagens 100% recicláveis ou biodegradáveis. Cuidamos do seu pet e do planeta.</p>
-      </div>
-      <div class="feat">
-        <div class="feat-icon">🌱</div>
-        <h3>Sem Crueldade</h3>
-        <p>Produtos cruelty-free, com fornecedores que praticam criação humanitária e sustentável.</p>
-      </div>
+
+<!-- Seção que mostrará as ações cadastradas -->
+<section>
+    <h2>Ações cadastradas</h2>
+
+    <!--
+        O JavaScript colocará as fichas cadastradas
+        dentro deste elemento.
+    -->
+    <div id="listaAcoes">
+        <p>Nenhuma ação cadastrada ainda.</p>
     </div>
-  </div>
 </section>
-  
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">Natur<span>Pet</span></div>
-      <p class="footer-desc">Nutrição natural para pets, cuidado real para animais em situação de risco. Porque todo animal merece amor e uma alimentação de qualidade.</p>
-      <br>
-      <div class="ong-footer-badge">❤️ 40% do lucro para ONGs animais</div>
+<!-- Seção com orientações gerais sobre a saúde dos animais -->
+<section>
+    <h2>Cuidados com a saúde dos animais</h2>
+
+    <p>
+        Cuidar da saúde dos animais envolve atenção à alimentação,
+        higiene, atividade física, comportamento e outros cuidados.
+    </p>
+
+    <p>
+        Caso o animal apresente sinais de alteração na saúde,
+        procure orientação de um médico-veterinário.
+    </p>
+
+    <!-- Aviso importante para os usuários do site -->
+    <div class="aviso-veterinario">
+        <strong>Importante:</strong>
+
+        <p>
+            As informações deste site têm finalidade educativa
+            e não substituem uma avaliação feita por um médico-veterinário.
+        </p>
+
+        <p>
+            Para informações específicas sobre uma doença, sintoma,
+            alimentação ou tratamento, consulte uma fonte veterinária
+            confiável ou um profissional.
+        </p>
     </div>
-    <div>
-      <div class="footer-title">Produtos</div>
-      <ul class="footer-links">
-        <li><a href="#">Rações Naturais</a></li>
-        <li><a href="#">Petiscos Artesanais</a></li>
-        <li><a href="#">Snacks Veganos</a></li>
-        <li><a href="#">Linha Filhotes</a></li>
-        <li><a href="#">Suplementos</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-title">Empresa</div>
-      <ul class="footer-links">
-        <li><a href="#">Sobre nós</a></li>
-        <li><a href="#">Nossa causa</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Imprensa</a></li>
-        <li><a href="#">Trabalhe conosco</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-title">Ajuda</div>
-      <ul class="footer-links">
-        <li><a href="#">Central de ajuda</a></li>
-        <li><a href="#">Frete e entrega</a></li>
-        <li><a href="#">Trocas e devoluções</a></li>
-        <li><a href="#">Política de privacidade</a></li>
-        <li><a href="#">Contato</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2025 NaturPet — Todos os direitos reservados</span>
-    <span>Feito com ❤️ por quem ama animais</span>
-  </div>
-</footer>
-  
-<!-- CART DRAWER -->
-<div class="overlay" id="overlay" onclick="closeCart()"></div>
-<div class="cart-drawer" id="cartDrawer">
-  <div class="cart-header">
-    <h2>🛒 Seu Carrinho</h2>
-    <button class="close-btn" onclick="closeCart()">✕</button>
-  </div>
-  <div class="cart-items" id="cartItems">
-    <div class="cart-empty">
-      <div class="empty-icon">🐾</div>
-      <p>Seu carrinho está vazio.<br>Adicione produtos para seu pet!</p>
-    </div>
-  </div>
-  <div class="cart-footer" id="cartFooter" style="display:none">
-    <div class="cart-subtotal">
-      <span>Subtotal</span>
-      <strong id="cartSubtotal">R$ 0,00</strong>
-    </div>
-    <div class="ong-contribution">
-      <span class="label">❤️ Doação para ONGs (40%)</span>
-      <span class="val" id="ongVal">R$ 0,00</span>
-    </div>
-    <button class="checkout-btn">Finalizar Pedido →</button>
-  </div>
-</div>
- 
-<!-- TOAST -->
-<div class="toast" id="toast"></div>
- 
-<script>
-// ─── PRODUCTS DATA ───
-const products = [
-  {id:1, name:'Ração Natural Frango & Arroz', desc:'Frango caipira com arroz integral, cenoura e abóbora. Sem conservantes, baixo índice glicêmico.', price:89.90, icon:'🍗', bg:'bg-green', badge:'natural', tags:['Sem conservantes','Grain friendly','Cães adultos'], cat:'natural'},
-  {id:2, name:'Petisco Bifinho Artesanal', desc:'Tirinhas de carne bovina desidratada, temperadas com alecrim. Fonte proteica e irresistível.', price:34.90, icon:'🥩', bg:'bg-amber', badge:'petisco', tags:['Alto teor proteico','Sem glúten','Cães e gatos'], cat:'petisco'},
-  {id:3, name:'Ração Natural Salmão & Batata', desc:'Salmão atlântico, batata-doce, brócolis e chia. Rica em ômega-3 para pelagem brilhante.', price:109.90, icon:'🐟', bg:'bg-blue', badge:'natural', tags:['Ômega-3','Pelo brilhante','Sem corantes'], cat:'natural'},
-  {id:4, name:'Snack de Cenoura & Aveia', desc:'Biscoitinhos veganos de cenoura, aveia e mel. Perfeito como treino e recompensa.', price:24.90, icon:'🥕', bg:'bg-pink', badge:'snack', tags:['Vegano','Low calorie','Cães'], cat:'snack'},
-  {id:5, name:'Ração Filhotes Frango Orgânico', desc:'Formulada para filhotes de 2 a 12 meses, com DHA de algas marinhas para desenvolvimento cerebral.', price:99.90, icon:'🐣', bg:'bg-lilac', badge:'novo', tags:['DHA','Filhotes','Crescimento'], cat:'filhote'},
-  {id:6, name:'Petisco Dentinho de Aloe', desc:'Snack dental com aloe vera e hortelã. Limpa os dentes e refresca o hálito de forma natural.', price:39.90, icon:'🦷', bg:'bg-green', badge:'petisco', tags:['Dental','Hálito fresco','Sem açúcar'], cat:'petisco'},
-  {id:7, name:'Ração Natural Boi & Quinoa', desc:'Carne bovina magra, quinoa, espinafre e cúrcuma. Anti-inflamatório natural para cães sênior.', price:119.90, icon:'🥩', bg:'bg-clay', badge:'natural', tags:['Sênior','Anti-inflamatório','Sem grão'], cat:'natural'},
-  {id:8, name:'Petisco Freeze-Dried Coração', desc:'Coração bovino liofilizado. 100% natural, máxima palatabilidade, mínimo processamento.', price:49.90, icon:'❤️', bg:'bg-pink', badge:'petisco', tags:['Liofilizado','Alta palatabilidade','Gatos e cães'], cat:'petisco'},
-  {id:9, name:'Snack Vegano Abóbora & Coco', desc:'Bolachinhas de abóbora japonesa com farinha de coco, zero açúcar e zero glúten.', price:28.90, icon:'🎃', bg:'bg-amber', badge:'snack', tags:['Vegano','Zero açúcar','Zero glúten'], cat:'snack'},
-  {id:10, name:'Ração Gatos Natural Frango', desc:'Formulada especialmente para felinos. Frango fresco, taurina natural e óleo de sardinha.', price:94.90, icon:'🐈', bg:'bg-lilac', badge:'ong', tags:['Para gatos','Taurina','Sem cereais'], cat:'natural'},
-  {id:11, name:'Petisco Palito de Couro Vegetal', desc:'Alternativa vegana ao osso convencional. Feito de fibras vegetais, não lasca e é digestível.', price:29.90, icon:'🌾', bg:'bg-green', badge:'petisco', tags:['Vegano','Digestível','Dental'], cat:'petisco'},
-  {id:12, name:'Mix Filhote Cereais Integrais', desc:'Granola saborosa para filhotes, com aveia, arroz integral, mel e leite de coco. Energia limpa.', price:79.90, icon:'🥣', bg:'bg-blue', badge:'novo', tags:['Filhotes','Energia','Grãos integrais'], cat:'filhote'},
-];
- 
-let cart = [];
-let activeFilter = 'todos';
- 
-// ─── RENDER PRODUCTS ───
-function renderProducts(list) {
-  const grid = document.getElementById('productsGrid');
-  grid.innerHTML = '';
-  if (!list.length) {
-    grid.innerHTML = '<p style="color:var(--bark-light);grid-column:1/-1;text-align:center;padding:40px">Nenhum produto encontrado.</p>';
-    return;
-  }
-  list.forEach(p => {
-    const badgeColors = {natural:'', petisco:'petisco', snack:'petisco', novo:'novo', ong:'ong'};
-    const bClass = badgeColors[p.badge] || '';
-    const badgeLabels = {natural:'🌿 Natural', petisco:'🦴 Petisco', snack:'🥕 Snack', novo:'✨ Novo', ong:'❤️ ONG Pick'};
-    grid.innerHTML += `
-    <div class="prod-card" data-cat="${p.cat}">
-      <div class="prod-img ${p.bg}">
-        <span>${p.icon}</span>
-        <span class="prod-badge ${bClass}">${badgeLabels[p.badge]||p.badge}</span>
-        <button class="wishlist-btn" title="Favoritar">🤍</button>
-      </div>
-      <div class="prod-body">
-        <div class="prod-name">${p.name}</div>
-        <div class="prod-desc">${p.desc}</div>
-        <div class="prod-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
-        <div class="prod-footer">
-          <div class="prod-price">R$ ${p.price.toFixed(2).replace('.',',')}</div>
-          <button class="add-btn" onclick="addToCart(${p.id})">+ Adicionar</button>
-        </div>
-      </div>
-    </div>`;
-  });
-}
- 
-renderProducts(products);
- 
-// ─── FILTER ───
-function setFilter(f, btn) {
-  activeFilter = f;
-  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  const filtered = f === 'todos' ? products : products.filter(p => p.cat === f);
-  renderProducts(filtered);
-}
- 
-function filterCat(cat) {
-  activeFilter = cat;
-  document.querySelectorAll('.ftab').forEach(b=>b.classList.remove('active'));
-  const map = {caes:'natural', gatos:'natural', natural:'natural', petisco:'petisco', snack:'snack', filhote:'filhote'};
-  const f = map[cat] || cat;
-  const filtered = products.filter(p => p.cat === f || p.name.toLowerCase().includes(cat));
-  renderProducts(filtered);
-  document.getElementById('produtos').scrollIntoView({behavior:'smooth'});
-}
- 
-// ─── CART ───
-function addToCart(id) {
-  const p = products.find(x=>x.id===id);
-  const existing = cart.find(x=>x.id===id);
-  if (existing) { existing.qty++; }
-  else { cart.push({...p, qty:1}); }
-  updateCartUI();
-  showToast(`✅ ${p.name} adicionado!`);
-  bumpCount();
-}
- 
-function updateCartUI() {
-  const total = cart.reduce((s,i)=>s+i.price*i.qty, 0);
-  const count = cart.reduce((s,i)=>s+i.qty, 0);
-  document.getElementById('cartCount').textContent = count;
- 
-  const itemsEl = document.getElementById('cartItems');
-  const footerEl = document.getElementById('cartFooter');
- 
-  if (!cart.length) {
-    itemsEl.innerHTML = `<div class="cart-empty"><div class="empty-icon">🐾</div><p>Seu carrinho está vazio.<br>Adicione produtos para seu pet!</p></div>`;
-    footerEl.style.display = 'none';
-    return;
-  }
-  footerEl.style.display = 'block';
-  itemsEl.innerHTML = cart.map(i=>`
-    <div class="cart-item">
-      <div class="ci-icon">${i.icon}</div>
-      <div class="ci-info">
-        <div class="ci-name">${i.name}</div>
-        <div class="ci-price">R$ ${i.price.toFixed(2).replace('.',',')}</div>
-      </div>
-      <div class="ci-qty">
-        <button class="qty-btn" onclick="changeQty(${i.id},-1)">−</button>
-        <span class="qty-val">${i.qty}</span>
-        <button class="qty-btn" onclick="changeQty(${i.id},1)">+</button>
-      </div>
-      <div class="ci-total">R$ ${(i.price*i.qty).toFixed(2).replace('.',',')}</div>
-    </div>`).join('');
-  document.getElementById('cartSubtotal').textContent = `R$ ${total.toFixed(2).replace('.',',')}`;
-  document.getElementById('ongVal').textContent = `R$ ${(total*0.4).toFixed(2).replace('.',',')}`;
-}
- 
-function changeQty(id, delta) {
-  const i = cart.find(x=>x.id===id);
-  if (!i) return;
-  i.qty += delta;
-  if (i.qty <= 0) cart = cart.filter(x=>x.id!==id);
-  updateCartUI();
-}
- 
-function openCart() {
-  document.getElementById('cartDrawer').classList.add('open');
-  document.getElementById('overlay').classList.add('show');
-}
-function closeCart() {
-  document.getElementById('cartDrawer').classList.remove('open');
-  document.getElementById('overlay').classList.remove('show');
-}
- 
-function bumpCount() {
-  const el = document.getElementById('cartCount');
-  el.classList.remove('bump');
-  void el.offsetWidth;
-  el.classList.add('bump');
-}
- 
-// ─── TOAST ───
-let toastTimer;
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>t.classList.remove('show'), 2500);
-}
- 
-// ─── SEARCH ───
-const searchData = products.map(p=>({name:p.name, cat:p.cat, id:p.id, icon:p.icon}));
-const catLabels = {natural:'Ração Natural', petisco:'Petisco', snack:'Snack', filhote:'Filhotes'};
- 
-document.getElementById('searchInput').addEventListener('input', function() {
-  const q = this.value.trim().toLowerCase();
-  const dd = document.getElementById('searchDropdown');
-  if (!q) { dd.classList.remove('show'); return; }
-  const results = searchData.filter(p => p.name.toLowerCase().includes(q)).slice(0,6);
-  if (!results.length) { dd.classList.remove('show'); return; }
-  dd.innerHTML = results.map(r=>`
-    <div class="search-result-item" onclick="pickSearch(${r.id})">
-      <span>${r.icon}</span>
-      <span>${r.name}</span>
-      <span class="scat">${catLabels[r.cat]||r.cat}</span>
-    </div>`).join('');
-  dd.classList.add('show');
-});
- 
-document.getElementById('searchInput').addEventListener('blur', ()=>{
-  setTimeout(()=>document.getElementById('searchDropdown').classList.remove('show'), 200);
-});
- 
-function pickSearch(id) {
-  const p = products.find(x=>x.id===id);
-  document.getElementById('searchInput').value = p.name;
-  document.getElementById('searchDropdown').classList.remove('show');
-  renderProducts([p]);
-  document.getElementById('produtos').scrollIntoView({behavior:'smooth'});
-}
- 
-function doSearch() {
-  const q = document.getElementById('searchInput').value.trim().toLowerCase();
-  if (!q) return;
-  const results = products.filter(p=>p.name.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q));
-  renderProducts(results);
-  document.getElementById('searchDropdown').classList.remove('show');
-  document.getElementById('produtos').scrollIntoView({behavior:'smooth'});
-}
- 
-document.getElementById('searchInput').addEventListener('keydown', e=>{
-  if (e.key === 'Enter') doSearch();
-});
- 
-// Wishlist toggle
-document.addEventListener('click', e=>{
-  if (e.target.classList.contains('wishlist-btn')) {
-    e.target.textContent = e.target.textContent === '🤍' ? '❤️' : '🤍';
-  }
-});
-</script>
+</section>
+
+
+    </main>
+
+    <!-- Rodapé do site -->
+    <footer>
+        <p>Zootopia Pet - Projeto escolar</p>
+    </footer>
+
+    <!-- Conecta o arquivo JavaScript ao HTML -->
+    <script src="script.js"></script>
 </body>
 </html>
