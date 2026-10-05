@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Define que o site aceita caracteres como acentos e ç -->
+    <!-- Define que o site usa caracteres da língua portuguesa -->
     <meta charset="UTF-8">
 
     <!-- Faz o site se adaptar a celulares e computadores -->
@@ -21,49 +21,119 @@
         <h1>Zootopia Pet</h1>
 
         <p>
-            Informações e dicas para ajudar nos cuidados com a saúde
-            e o bem-estar dos animais.
+            Saúde e bem-estar para os animais da nossa comunidade.
         </p>
     </header>
 
     <!-- Conteúdo principal do site -->
     <main>
 
-        <!-- Seção de apresentação -->
-        <section>
-            <h2>Cuide melhor do seu animal</h2>
+       <!-- Seção de apresentação do projeto -->
+<section>
+    <h2>Sobre o projeto</h2>
 
-            <p>
-                Encontre informações sobre alimentação, cuidados,
-                higiene e prevenção de problemas de saúde.
-            </p>
-        </section>
+    <p>
+        O Zootopia Pet oferece informações e orientações
+        sobre saúde e bem-estar dos animais.
+    </p>
 
-       <!-- Área de cadastro das ações realizadas pela comunidade -->
+    <p>
+        O projeto ajuda tutores a identificar possíveis
+        problemas relacionados a alergias, obesidade e
+        dificuldades digestivas.
+    </p>
+
+    <!-- Objetivo principal do projeto -->
+    <h3>Objetivo</h3>
+
+    <p>
+        Ajudar pessoas que possuem animais de estimação
+        a encontrar informações sobre cuidados e
+        bem-estar dos seus animais.
+    </p>
+
+    <!-- ODS relacionado ao projeto -->
+    <h3>ODS do projeto</h3>
+
+    <p>
+        <strong>ODS 3 — Saúde e bem-estar</strong>
+    </p>
+
+    <p>
+        O projeto está relacionado à promoção da saúde
+        e do bem-estar, incluindo os cuidados com os
+        animais da comunidade.
+    </p>
+</section>
+
+
+       <!-- Seção que mostra as ações cadastradas -->
+<!-- Seção que mostra as ações cadastradas -->
+<section>
+    <h2>Ações cadastradas</h2>
+
+    <!--
+        O JavaScript vai atualizar este número
+        automaticamente conforme as ações forem
+        cadastradas ou excluídas.
+    -->
+    <p id="contadorAcoes">
+        Total de ações cadastradas: 0
+    </p>
+
+    <!--
+        O JavaScript vai colocar as fichas das ações
+        dentro deste elemento.
+    -->
+    <div id="listaAcoes"></div>
+
+    <!--
+        Esta mensagem aparece quando ainda não
+        existe nenhuma ação cadastrada.
+    -->
+    <p id="mensagemSemAcoes">
+        Nenhuma ação cadastrada ainda.
+    </p>
+</section>
+
+
+<!-- Seção de cadastro de uma nova ação -->
 <section>
     <h2>Cadastrar uma ação</h2>
 
     <!-- 
-        O formulário reúne os dados que o usuário precisa preencher.
-        O JavaScript será responsável por receber essas informações depois.
+        Formulário onde o usuário preencherá
+        as informações da ação realizada.
     -->
     <form id="formularioAcao">
 
-        <!-- Campo para informar a categoria da ação -->
-        <label for="categoria">Categoria:</label>
+        <!-- Campo para o título da ação -->
+        <label for="titulo">Título da ação:</label>
         <input
             type="text"
-            id="categoria"
-            name="categoria"
+            id="titulo"
+            name="titulo"
+            placeholder="Exemplo: Mutirão de cuidados com animais"
             required
         >
 
-        <!-- Campo para informar onde a ação aconteceu -->
+        <!-- Campo para escolher a categoria -->
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" name="categoria" required>
+            <option value="">Selecione uma categoria</option>
+            <option value="Ambiental">Ambiental</option>
+            <option value="Social">Social</option>
+            <option value="Educação">Educação</option>
+            <option value="Saúde">Saúde</option>
+        </select>
+
+        <!-- Campo para informar o local -->
         <label for="local">Local:</label>
         <input
             type="text"
             id="local"
             name="local"
+            placeholder="Exemplo: Bairro [nome do bairro]"
             required
         >
 
@@ -74,84 +144,29 @@
             id="participantes"
             name="participantes"
             min="0"
+            placeholder="Digite a quantidade"
             required
         >
 
-        <!-- Campo para descrever o que foi feito -->
+        <!-- Campo para explicar o que foi feito -->
         <label for="descricao">O que foi feito:</label>
-        <input
-            type="text"
+        <textarea
             id="descricao"
             name="descricao"
+            rows="5"
+            placeholder="Conte o que foi realizado na ação"
             required
-        >
+        ></textarea>
 
         <!-- 
-            A data não precisa ser preenchida pelo usuário.
-            O JavaScript vai colocar a data automaticamente.
+            A data não será digitada pelo usuário.
+            O JavaScript vai preenchê-la automaticamente.
         -->
 
-        <!-- Botão que envia o formulário -->
+        <!-- Botão que futuramente salvará a ação -->
         <button type="submit">Cadastrar ação</button>
 
     </form>
-</section>
-<!-- Área onde serão mostradas as ações cadastradas -->
-<section>
-    <h2>Ações cadastradas</h2>
-    <!-- Mostra a quantidade de ações cadastradas -->
-<p class="contador-acoes">
-    Ações cadastradas: <strong id="quantidadeAcoes">0</strong>
-</p>
-
-    <!--
-        O JavaScript vai colocar as fichas cadastradas
-        dentro desta área.
-    -->
-    <div id="listaAcoes"></div>
-</section>
-
-<!-- Seção que mostrará as ações cadastradas -->
-<section>
-    <h2>Ações cadastradas</h2>
-
-    <!--
-        O JavaScript colocará as fichas cadastradas
-        dentro deste elemento.
-    -->
-    <div id="listaAcoes">
-        <p>Nenhuma ação cadastrada ainda.</p>
-    </div>
-</section>
-<!-- Seção com orientações gerais sobre a saúde dos animais -->
-<section>
-    <h2>Cuidados com a saúde dos animais</h2>
-
-    <p>
-        Cuidar da saúde dos animais envolve atenção à alimentação,
-        higiene, atividade física, comportamento e outros cuidados.
-    </p>
-
-    <p>
-        Caso o animal apresente sinais de alteração na saúde,
-        procure orientação de um médico-veterinário.
-    </p>
-
-    <!-- Aviso importante para os usuários do site -->
-    <div class="aviso-veterinario">
-        <strong>Importante:</strong>
-
-        <p>
-            As informações deste site têm finalidade educativa
-            e não substituem uma avaliação feita por um médico-veterinário.
-        </p>
-
-        <p>
-            Para informações específicas sobre uma doença, sintoma,
-            alimentação ou tratamento, consulte uma fonte veterinária
-            confiável ou um profissional.
-        </p>
-    </div>
 </section>
 
 
@@ -159,10 +174,11 @@
 
     <!-- Rodapé do site -->
     <footer>
-        <p>Zootopia Pet - Projeto escolar</p>
+        <p>Zootopia Pet — ODS 3: Saúde e bem-estar</p>
     </footer>
 
-    <!-- Conecta o arquivo JavaScript ao HTML -->
+    <!-- Conecta o HTML ao arquivo JavaScript -->
     <script src="script.js"></script>
+
 </body>
 </html>

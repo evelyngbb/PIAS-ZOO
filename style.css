@@ -1,6 +1,6 @@
 /* 
-   Define algumas configurações básicas para toda a página.
-   O "box-sizing" ajuda a controlar melhor os tamanhos dos elementos.
+   Define algumas configurações gerais para toda a página.
+   O box-sizing facilita o controle dos tamanhos dos elementos.
 */
 * {
     box-sizing: border-box;
@@ -8,11 +8,13 @@
 
 /* 
    Define a aparência geral da página.
+   A fonte usada é uma fonte comum do próprio computador,
+   portanto não precisamos instalar nenhuma biblioteca.
 */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #f4f8f2;
+    background-color: #f4f8f3;
     color: #26352a;
     line-height: 1.6;
 }
@@ -21,14 +23,14 @@ body {
    Estiliza o cabeçalho do site.
 */
 header {
-    background-color: #4f8a5b;
+    background-color: #3d7a4d;
     color: white;
     text-align: center;
     padding: 40px 20px;
 }
 
 /* 
-   Define o tamanho do título principal.
+   Estiliza o título principal.
 */
 header h1 {
     margin: 0 0 10px;
@@ -44,23 +46,25 @@ header p {
 }
 
 /* 
-   Define uma largura máxima para o conteúdo
+   Define a largura máxima do conteúdo principal
    e coloca um espaço nas laterais.
 */
 main {
+    width: 90%;
     max-width: 900px;
     margin: 30px auto;
-    padding: 0 20px;
 }
 
 /* 
-   Cria o visual de cartão para cada seção.
+   Cada seção fica dentro de um cartão branco.
 */
 section {
     background-color: white;
-    padding: 25px;
     margin-bottom: 25px;
+    padding: 25px;
     border-radius: 12px;
+
+    /* Cria uma sombra suave ao redor do cartão. */
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -68,8 +72,8 @@ section {
    Estiliza os títulos das seções.
 */
 section h2 {
-    color: #397044;
     margin-top: 0;
+    color: #3d7a4d;
 }
 
 /* 
@@ -82,166 +86,260 @@ footer {
     padding: 20px;
     margin-top: 40px;
 }
-/* =========================================================
-   FICHAS DAS AÇÕES CADASTRADAS
-   ========================================================= */
 
-/* Organiza as fichas uma abaixo da outra */
-#listaAcoes {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-/* Estiliza cada ficha cadastrada */
-.ficha-acao {
-    background-color: #f8fff8;
-    border-left: 5px solid #4caf50;
-    padding: 18px;
-    border-radius: 8px;
-}
-
-/* Estiliza o título da ficha */
-.ficha-acao h3 {
-    color: #2e7d32;
-    margin-bottom: 10px;
-}
-
-/* Cria um pequeno espaço entre as informações */
-.ficha-acao p {
-    margin-bottom: 6px;
-}
-
-/* Remove o espaço extra do último parágrafo */
-.ficha-acao p:last-child {
-    margin-bottom: 0;
-}
-/* =========================================================
-   FORMULÁRIO DE CADASTRO
-   ========================================================= */
-
-/* Organiza os campos do formulário */
-#formularioAcao {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-/* Organiza cada campo e seu respectivo texto */
-#formularioAcao div {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-
-/* Estiliza os textos que identificam os campos */
-#formularioAcao label {
-    font-weight: bold;
-    color: #333333;
-}
-
-/* Estiliza os campos onde o usuário digita */
-#formularioAcao input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #cccccc;
-    border-radius: 6px;
-    font-size: 16px;
-}
-
-/* Muda a aparência do campo quando o usuário clica nele */
-#formularioAcao input:focus {
-    outline: none;
-    border-color: #4caf50;
-    box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.15);
-}
-
-/* Estiliza o botão de cadastrar */
-#formularioAcao button {
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    padding: 13px 20px;
-    border-radius: 6px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-/* Muda a cor do botão quando o mouse passa sobre ele */
-#formularioAcao button:hover {
-    background-color: #388e3c;
-}
-
-
-/* =========================================================
-   BOTÃO DE EXCLUSÃO
-   ========================================================= */
-
-/* Estiliza o botão que exclui uma ficha */
-.botao-excluir {
-    background-color: #d32f2f;
-    color: white;
-    border: none;
-    padding: 9px 15px;
-    border-radius: 5px;
-    margin-top: 12px;
-    cursor: pointer;
-}
-
-/* Escurece o botão quando o mouse passa sobre ele */
-.botao-excluir:hover {
-    background-color: #b71c1c;
-}
-/* =========================================================
-   RESPONSIVIDADE
-   ========================================================= */
-
-/*
-   Estas regras são aplicadas quando a tela possui
-   no máximo 600 pixels de largura.
-   Isso normalmente inclui celulares.
+/* 
+   Adapta o título para telas menores,
+   como celulares.
 */
 @media (max-width: 600px) {
 
-    /* Diminui o tamanho do título principal */
     header h1 {
-        font-size: 30px;
+        font-size: 28px;
     }
 
-    /* Diminui o texto do cabeçalho */
     header p {
         font-size: 16px;
     }
 
-    /* Diminui um pouco o espaço interno do cabeçalho */
+    main {
+        width: 94%;
+    }
+
+    section {
+        padding: 20px;
+    }
+}
+/* 
+   Organiza os campos do formulário em uma coluna.
+*/
+#formularioAcao {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 
+   Deixa os textos dos campos mais fáceis de identificar.
+*/
+#formularioAcao label {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* 
+   Define a aparência dos campos de texto,
+   lista de categorias e campo de texto longo.
+*/
+#formularioAcao input,
+#formularioAcao select,
+#formularioAcao textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #b8c8bb;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    background-color: #ffffff;
+}
+
+/* 
+   Muda a cor da borda quando o usuário
+   clica em um campo para preenchê-lo.
+*/
+#formularioAcao input:focus,
+#formularioAcao select:focus,
+#formularioAcao textarea:focus {
+    outline: none;
+    border-color: #3d7a4d;
+    box-shadow: 0 0 0 2px rgba(61, 122, 77, 0.15);
+}
+
+/* 
+   Permite que o usuário aumente a altura
+   do campo "O que foi feito", se precisar.
+*/
+#formularioAcao textarea {
+    resize: vertical;
+}
+
+/* 
+   Estiliza o botão de cadastro.
+*/
+#formularioAcao button {
+    margin-top: 15px;
+    padding: 13px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: #3d7a4d;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* 
+   Muda um pouco a cor do botão
+   quando o mouse passa por cima.
+*/
+#formularioAcao button:hover {
+    background-color: #32643f;
+}
+/*
+   Cada ação cadastrada será criada pelo JavaScript
+   como um elemento <article>.
+*/
+#listaAcoes article {
+    background-color: #f4f8f3;
+    border-left: 5px solid #3d7a4d;
+    border-radius: 8px;
+    padding: 18px;
+    margin-top: 15px;
+}
+
+
+/*
+   Estiliza o título de cada ação.
+*/
+#listaAcoes article h3 {
+    color: #3d7a4d;
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+
+/*
+   Organiza os textos das informações da ação.
+*/
+#listaAcoes article p {
+    margin: 8px 0;
+}
+
+
+/*
+   Deixa os nomes dos campos em destaque.
+*/
+#listaAcoes article strong {
+    color: #26352a;
+}
+
+
+/*
+   Quando o usuário passa o mouse sobre uma ficha,
+   ela fica levemente destacada.
+*/
+#listaAcoes article:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+/*
+   Estiliza o botão usado para excluir uma ação.
+*/
+.botaoExcluir {
+    margin-top: 15px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+
+    /* Cor vermelha para indicar uma ação de exclusão. */
+    background-color: #b84a4a;
+
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+
+    /* Mostra que o botão pode ser clicado. */
+    cursor: pointer;
+}
+
+
+/*
+   Muda a cor do botão quando o mouse passa por cima.
+*/
+.botaoExcluir:hover {
+    background-color: #963939;
+}
+/*
+   Estiliza os subtítulos usados dentro das seções,
+   como "Objetivo" e "ODS do projeto".
+*/
+section h3 {
+    color: #3d7a4d;
+    margin-top: 25px;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+
+/*
+   Dá um pequeno destaque ao texto que identifica
+   o ODS do projeto.
+*/
+section h3 + p strong {
+    color: #26352a;
+}
+/*
+   Ajustes para telas pequenas, como celulares.
+*/
+@media (max-width: 600px) {
+
+    /*
+        Diminui o espaço do cabeçalho para ocupar
+        menos espaço na tela.
+    */
     header {
         padding: 30px 15px;
     }
 
-    /* Ocupa quase toda a largura disponível */
-    main {
-        width: 94%;
-        margin: 20px auto;
+
+    /*
+        Diminui o tamanho do título principal.
+    */
+    header h1 {
+        font-size: 28px;
     }
 
-    /* Diminui o espaço interno das seções */
+
+    /*
+        Mantém o texto do cabeçalho confortável
+        para leitura em telas pequenas.
+    */
+    header p {
+        font-size: 16px;
+    }
+
+
+    /*
+        Aumenta um pouco o espaço interno
+        das seções para facilitar o toque.
+    */
     section {
         padding: 20px;
     }
 
-    /* Permite que os campos ocupem toda a largura */
-    #formularioAcao input {
-        font-size: 16px;
-    }
 
-    /* Faz o botão ocupar uma largura confortável no celular */
+    /*
+        Faz o botão ocupar toda a largura disponível.
+        Isso facilita o toque no celular.
+    */
     #formularioAcao button {
         width: 100%;
     }
 
-    /* Faz o botão de excluir ficar fácil de tocar */
-    .botao-excluir {
-        padding: 11px 16px;
+
+    /*
+        Também deixa o botão de excluir maior
+        e mais fácil de tocar.
+    */
+    .botaoExcluir {
+        width: 100%;
+        padding: 12px;
+    }
+
+
+    /*
+        Evita que textos muito grandes
+        causem problemas na largura da tela.
+    */
+    #listaAcoes article {
+        overflow-wrap: break-word;
     }
 }
