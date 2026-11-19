@@ -1,184 +1,155 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <!-- Define que o site usa caracteres da língua portuguesa -->
-    <meta charset="UTF-8">
-
-    <!-- Faz o site se adaptar a celulares e computadores -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Nome que aparece na aba do navegador -->
-    <title>Zootopia Pet</title>
-
-    <!-- Conecta o arquivo HTML ao arquivo de estilos CSS -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zootopia Pet — Amor que transforma</title>
+  <meta name="description" content="A Zootopia Pet acolhe animais de rua e conecta pessoas que querem ajudar.">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="site-header" id="inicio">
+    <a class="brand" href="#inicio" aria-label="Zootopia Pet início">
+      <span class="brand-mark"></span>
+      <div class="logo">
+    <img src="img/logo pet.jpe"
+         alt="Logo Zootopia Pet"
+         class="logo-img">
 
-    <!-- Cabeçalho principal do site -->
-    <header>
-        <h1>Zootopia Pet</h1>
+    <div>
+        <h2>Zootopia Pet</h2>
+        <p>Juntos por um futuro melhor para os animais</p>
+    </div>
+</div>
 
-        <p>
-            Saúde e bem-estar para os animais da nossa comunidade.
-        </p>
-    </header>
+    </a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="active" href="#inicio">Início</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#ajudar">Como Ajudar</a>
+      <a href="#doar">Doar</a>
+      <a href="#mural">Mural</a>
+    </nav>
+  </header>
 
-    <!-- Conteúdo principal do site -->
-    <main>
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <span class="eyebrow">Amor que transforma</span>
+        <h1 id="hero-title">Faça a <em>diferença!</em></h1>
+        <p>Aqui, os animais de rua encontram abrigo e você pode ajudar a construir um futuro com mais amor e cuidado.</p>
+        <a class="primary-button" href="#doar"> <span>Doe agora</span> <b>→</b></a>
+      </div>
+      <div class="hero-art" role="img" aria-label="Cachorro e gato acolhidos pela Zootopia Pet">
+        <img src="img/caes-gatos-3.jpg" alt="Cachorro e gato felizes juntos">
+      </div>
+    </section>
 
-       <!-- Seção de apresentação do projeto -->
-<section>
-    <h2>Sobre o projeto</h2>
+    <section class="about section-grid" id="sobre">
+      <div>
+        <span class="section-kicker">Nossa história</span>
+        <h2>Sobre a Zootopia Pet <span>♡</span></h2>
+        <p>Somos uma iniciativa dedicada ao resgate, cuidado e abrigo de animais de rua. Nosso objetivo é oferecer um lar seguro, alimentação adequada e muito amor, enquanto buscamos a ajuda da comunidade para continuar essa missão.</p>
+        <a class="text-link" href="#ajudar">Conheça formas de ajudar <span>→</span></a>
+      </div>
+      <div class="about-photo">
+        <img src="img/gato.jpe" alt="caes">
+      </div>
+    </section>
 
-    <p>
-        O Zootopia Pet oferece informações e orientações
-        sobre saúde e bem-estar dos animais.
+    <section class="help-section" id="ajudar">
+      <div class="help-content">
+        <span class="section-kicker">Pequenas atitudes, grande impacto</span>
+        <h2>Como ajudar? <span>♡</span></h2>
+        <p>Você pode fazer a diferença de várias formas:</p>
+        <div class="help-cards">
+          <article><div class="help-icon">🐾</div><h3>Doe produtos</h3><p>Ração, medicamentos ou itens de higiene.</p></article>
+          <article><div class="help-icon">♡</div><h3>Faça uma doação</h3><p>Contribua via PIX ou outros meios.</p></article>
+          <article><div class="help-icon">↗</div><h3>Compartilhe</h3><p>Leve nosso trabalho para as redes sociais.</p></article>
+          <article><div class="help-icon">♥</div><h3>Seja apoiador</h3><p>Faça parte da nossa causa.</p></article>
+        </div>
+      </div>
+      <div class="donation-card" id="doar">
+        <span class="card-heart">♡</span>
+        <h2>Doe agora</h2>
+        <p>Sua doação ajuda a manter nosso abrigo e cuidar dos animais resgatados.</p>
+        <button type="button" class="primary-button" id="pix-button">▦ <span>Doar via PIX</span></button>
+        <small id="pix-message" aria-live="polite"></small>
+      </div>
+    </section>
+
+    <section class="mural-section" id="mural">
+      <div class="section-heading">
+        <div><span class="section-kicker">Nossa comunidade em ação</span><h2>Mural de ações <span>♡</span></h2></div>
+        <p id="contador-impacto">Ações cadastradas: 0</p>
+      </div>
+      <div class="mural-layout">
+        <section class="form-card" aria-labelledby="form-title">
+          <h3 id="form-title">Cadastre uma nova ação</h3>
+          <form id="form-ficha">
+            <label for="titulo">Título da ação</label>
+            <input type="text" id="titulo" name="titulo" placeholder="Ex: Mutirão de alimentação" required>
+            <label for="categoria">Categoria</label>
+            <select id="categoria" name="categoria" required><option value="">Escolha uma categoria</option><option>Bem-estar animal</option><option>alimentação</option><option>saúde animal</option><option>resgate animal</option></select>
+            <label for="local">Local</label>
+            <input type="text" id="local" name="local" placeholder="Onde aconteceu?" required>
+            <label for="pessoas">Participantes</label>
+            <input type="number" id="pessoas" name="pessoas" min="0" placeholder="Ex: 12" required>
+            <label for="descricao">O que foi feito?</label>
+            <textarea id="descricao" name="descricao" rows="4" placeholder="Conte como foi a ação..." required></textarea>
+            <button type="submit" class="primary-button">Salvar ação</button>
+          </form>
+        </section>
+        <div id="lista-fichas" class="cards-grid" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  
+<footer class="footer-zootopia">
+
+  <!-- Símbolo do Paraná -->
+  <div class="footer-simbolo">
+    <img src="img/governo_estado-removebg-preview.png"
+         alt="Brasão do Estado do Paraná">
+  </div>
+
+  <!-- Identidade da Zootopia Pet -->
+  <div class="footer-centro">
+
+    <div class="footer-brand">
+      <span class="brand-mark"></span>
+      <strong>Zootopia Pet</strong>
+    </div>
+
+    <div class="footer-contato">
+      <h3>Entre em contato</h3>
+
+      <p> (45)40028922</p>
+
+      <a href="https://www.instagram.com/zootopia_petcare?fqnt=ZG51NHN5MmNkZDdw"
+         target="_blank">
+         @zootopia_petcare
+      </a>
+    </div>
+
+    <p class="footer-frase">
+      Juntos por um mundo com mais amor pelos animais! 💜
     </p>
 
-    <p>
-        O projeto ajuda tutores a identificar possíveis
-        problemas relacionados a alergias, obesidade e
-        dificuldades digestivas.
-    </p>
+    <span class="footer-ods">
+      ODS 3 · Saúde e bem-estar
+    </span>
 
-    <!-- Objetivo principal do projeto -->
-    <h3>Objetivo</h3>
+  </div>
 
-    <p>
-        Ajudar pessoas que possuem animais de estimação
-        a encontrar informações sobre cuidados e
-        bem-estar dos seus animais.
-    </p>
+  <!-- Símbolo do Colégio -->
+  <div class="footer-simbolo">
+    <img src="img/colegio-removebg-preview.png"
+         alt="Colégio Cívico-Militar do Paraná">
+  </div>
 
-    <!-- ODS relacionado ao projeto -->
-    <h3>ODS do projeto</h3>
-
-    <p>
-        <strong>ODS 3 — Saúde e bem-estar</strong>
-    </p>
-
-    <p>
-        O projeto está relacionado à promoção da saúde
-        e do bem-estar, incluindo os cuidados com os
-        animais da comunidade.
-    </p>
-</section>
-
-
-       <!-- Seção que mostra as ações cadastradas -->
-<!-- Seção que mostra as ações cadastradas -->
-<section>
-    <h2>Ações cadastradas</h2>
-
-    <!--
-        O JavaScript vai atualizar este número
-        automaticamente conforme as ações forem
-        cadastradas ou excluídas.
-    -->
-    <p id="contadorAcoes">
-        Total de ações cadastradas: 0
-    </p>
-
-    <!--
-        O JavaScript vai colocar as fichas das ações
-        dentro deste elemento.
-    -->
-    <div id="listaAcoes"></div>
-
-    <!--
-        Esta mensagem aparece quando ainda não
-        existe nenhuma ação cadastrada.
-    -->
-    <p id="mensagemSemAcoes">
-        Nenhuma ação cadastrada ainda.
-    </p>
-</section>
-
-
-<!-- Seção de cadastro de uma nova ação -->
-<section>
-    <h2>Cadastrar uma ação</h2>
-
-    <!-- 
-        Formulário onde o usuário preencherá
-        as informações da ação realizada.
-    -->
-    <form id="formularioAcao">
-
-        <!-- Campo para o título da ação -->
-        <label for="titulo">Título da ação:</label>
-        <input
-            type="text"
-            id="titulo"
-            name="titulo"
-            placeholder="Exemplo: Mutirão de cuidados com animais"
-            required
-        >
-
-        <!-- Campo para escolher a categoria -->
-        <label for="categoria">Categoria:</label>
-        <select id="categoria" name="categoria" required>
-            <option value="">Selecione uma categoria</option>
-            <option value="Ambiental">Ambiental</option>
-            <option value="Social">Social</option>
-            <option value="Educação">Educação</option>
-            <option value="Saúde">Saúde</option>
-        </select>
-
-        <!-- Campo para informar o local -->
-        <label for="local">Local:</label>
-        <input
-            type="text"
-            id="local"
-            name="local"
-            placeholder="Exemplo: Bairro [nome do bairro]"
-            required
-        >
-
-        <!-- Campo para informar quantas pessoas participaram -->
-        <label for="participantes">Quantas pessoas participaram:</label>
-        <input
-            type="number"
-            id="participantes"
-            name="participantes"
-            min="0"
-            placeholder="Digite a quantidade"
-            required
-        >
-
-        <!-- Campo para explicar o que foi feito -->
-        <label for="descricao">O que foi feito:</label>
-        <textarea
-            id="descricao"
-            name="descricao"
-            rows="5"
-            placeholder="Conte o que foi realizado na ação"
-            required
-        ></textarea>
-
-        <!-- 
-            A data não será digitada pelo usuário.
-            O JavaScript vai preenchê-la automaticamente.
-        -->
-
-        <!-- Botão que futuramente salvará a ação -->
-        <button type="submit">Cadastrar ação</button>
-
-    </form>
-</section>
-
-
-    </main>
-
-    <!-- Rodapé do site -->
-    <footer>
-        <p>Zootopia Pet — ODS 3: Saúde e bem-estar</p>
-    </footer>
-
-    <!-- Conecta o HTML ao arquivo JavaScript -->
-    <script src="script.js"></script>
-
+</footer>
+<script src="script.js"></script>
 </body>
 </html>
